@@ -6,6 +6,39 @@ import styles from "./App.module.css";
 
 import "./global.css"; 
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://www.github.com/pablomartins1515.png',
+      name: 'Pablo Martins',
+      role: 'CTO @nada',
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala Galera ✌'},
+      {type: 'paragraph', content: 'Acabei de subir meu portifólio. É um projeto que fiz no nlw/return.'},
+      {type: 'link', content: 'jane.designer/doctorcare'},
+    ],
+    publishedAt: new Date('2023-04-08 18:00:00'),
+  },
+
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://www.github.com/diego3g.png',
+      name: 'Pablo Martins',
+      role: 'CTO @rockeseat',
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala Galera ✌'},
+      {type: 'paragraph', content: 'Acabei de subir meu portifólio. É um projeto que fiz no nlw/return.'},
+      {type: 'link', content: 'jane.designer/doctorcare'},
+    ],
+    publishedAt: new Date('2023-04-08 18:10:00'),
+  }
+];
+
+
 export function App() {
   return (
    <div>    
@@ -15,14 +48,16 @@ export function App() {
       <Sidebar />
 
       <main>
-        <Post 
-          author="Diego Fernandes"
-          content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint ea deleniti ratione cum dicta, dolore ab nisi quod necessitatibus obcaecati omnis, tempore placeat, commodi perferendis ullam earum pariatur nostrum explicabo!"
-          />
-        <Post
-          author="Diego Fernandes"
-          content="Outro Post legal"    
-        />
+          {posts.map(post => {
+            
+          return (
+            <Post
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
+            />
+          )
+        })}        
       </main>
     </div>
    </div>
